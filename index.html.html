@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+/>
+
+<title>Coffee Date ☕</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    -webkit-tap-highlight-color:transparent;
+}
+
+body{
+    font-family:Arial, sans-serif;
+    background:linear-gradient(135deg,#fdfbf7,#f5ece1);
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:18px;
+    color:#4a3b32;
+}
+
+.container{
+    width:100%;
+    max-width:500px;
+    background:#fff;
+    border-radius:22px;
+    padding:28px 22px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.08);
+}
+
+.icon{
+    font-size:48px;
+    text-align:center;
+    margin-bottom:12px;
+}
+
+h1{
+    text-align:center;
+    margin-bottom:14px;
+    color:#5c4336;
+    font-size:28px;
+}
+
+.description{
+    text-align:center;
+    line-height:1.7;
+    color:#6b5b52;
+    margin-bottom:22px;
+    font-size:15px;
+}
+
+.notice{
+    background:#faf5f0;
+    border-left:4px solid #b19482;
+    padding:14px;
+    border-radius:10px;
+    margin-bottom:24px;
+    line-height:1.6;
+    font-size:14px;
+}
+
+.form{
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+}
+
+.option{
+    border:2px solid #eaded3;
+    border-radius:14px;
+    padding:16px;
+    cursor:pointer;
+    transition:0.2s;
+}
+
+.option:hover{
+    border-color:#b19482;
+    background:#faf6f2;
+}
+
+.option-top{
+    display:flex;
+    align-items:flex-start;
+    gap:12px;
+}
+
+.option input[type="radio"]{
+    width:20px;
+    height:20px;
+    margin-top:2px;
+    accent-color:#8c6d58;
+    flex-shrink:0;
+}
+
+.option span{
+    line-height:1.5;
+    font-weight:600;
+    color:#524136;
+    font-size:15px;
+}
+
+.custom-fields{
+    display:none;
+    margin-top:14px;
+}
+
+.custom-fields input{
+    width:100%;
+    padding:12px;
+    margin-top:10px;
+    border-radius:10px;
+    border:1px solid #d7c7bc;
+    font-size:15px;
+    outline:none;
+}
+
+.custom-fields input:focus{
+    border-color:#8c6d58;
+}
+
+.button{
+    margin-top:8px;
+    width:100%;
+    border:none;
+    background:#8c6d58;
+    color:white;
+    padding:15px;
+    border-radius:14px;
+    font-size:16px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.button:active{
+    transform:scale(0.98);
+}
+
+.result{
+    display:none;
+    text-align:center;
+}
+
+.badge{
+    display:inline-block;
+    background:#e6f4ea;
+    color:#137333;
+    padding:7px 15px;
+    border-radius:999px;
+    font-size:14px;
+    font-weight:bold;
+    margin-bottom:18px;
+}
+
+.receipt{
+    background:#fafafa;
+    border:2px dashed #d1bfb3;
+    border-radius:16px;
+    padding:22px;
+    text-align:left;
+    margin:24px 0;
+}
+
+.label{
+    color:#8c7669;
+    margin-bottom:5px;
+    font-size:14px;
+}
+
+.value{
+    color:#33251d;
+    font-size:17px;
+    font-weight:bold;
+    line-height:1.5;
+}
+
+.divider{
+    height:1px;
+    background:#ebdcd0;
+    margin:16px 0;
+}
+
+.footer-note{
+    background:#f0ebe6;
+    padding:12px;
+    border-radius:10px;
+    text-align:center;
+    font-size:13px;
+    color:#8c7669;
+    line-height:1.5;
+}
+
+@media(max-width:480px){
+
+    body{
+        align-items:flex-start;
+        padding:14px;
+    }
+
+    .container{
+        padding:24px 18px;
+    }
+
+    h1{
+        font-size:24px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- FORM SCREEN -->
+
+    <div id="formScreen">
+
+        <div class="icon">☕</div>
+
+        <h1>Coffee Date?</h1>
+
+        <p class="description">
+            I would absolutely love to grab coffee with you sometime this week.
+            I’m genuinely excited to get to know you better and spend time together ✨
+        </p>
+
+        <div class="notice">
+            <strong>Gentle reminder:</strong><br>
+            You just need to prepare and show up.
+            I’ll take care of everything ☺️
+        </div>
+
+        <form id="dateForm" class="form">
+
+            <!-- OPTION 1 -->
+
+            <label class="option">
+
+                <div class="option-top">
+
+                    <input
+                        type="radio"
+                        name="dateOption"
+                        value="Yes! Let's do it."
+                        required
+                    >
+
+                    <span>
+                        Yes! Let's do it.
+                    </span>
+
+                </div>
+
+            </label>
+
+            <!-- OPTION 2 -->
+
+            <label class="option">
+
+                <div class="option-top">
+
+                    <input
+                        type="radio"
+                        name="dateOption"
+                        value="Absolutely! Count me in."
+                    >
+
+                    <span>
+                        Absolutely! Count me in.
+                    </span>
+
+                </div>
+
+            </label>
+
+            <!-- CUSTOM OPTION -->
+
+            <label class="option">
+
+                <div class="option-top">
+
+                    <input
+                        type="radio"
+                        id="customOption"
+                        name="dateOption"
+                        value="Custom Date"
+                    >
+
+                    <span>
+                        I'd love to! Here is a day/time that works for me...
+                    </span>
+
+                </div>
+
+                <div
+                    class="custom-fields"
+                    id="customFields"
+                >
+
+                    <input
+                        type="date"
+                        id="customDate"
+                    >
+
+                    <input
+                        type="text"
+                        id="customTime"
+                        placeholder="Preferred time"
+                    >
+
+                </div>
+
+            </label>
+
+            <button
+                type="submit"
+                class="button"
+            >
+                Confirm My Choice ✨
+            </button>
+
+        </form>
+
+    </div>
+
+    <!-- RESULT SCREEN -->
+
+    <div
+        class="result"
+        id="resultScreen"
+    >
+
+        <div class="badge">
+            ✓ It's an official date!
+        </div>
+
+        <h1>
+            Thank You & See You Soon! ☕
+        </h1>
+
+        <p class="description">
+            I cannot wait! Everything is set on your end.
+        </p>
+
+        <div class="receipt">
+
+            <div class="label">
+                Your Response:
+            </div>
+
+            <div
+                class="value"
+                id="finalResponse"
+            >
+                --
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="label">
+                Your Only Task:
+            </div>
+
+            <div
+                class="value"
+                style="color:#8c6d58;"
+            >
+                Just dress up, show up, and relax!
+            </div>
+
+        </div>
+
+        <div class="footer-note">
+            📸 Take a screenshot of this page and send it back to me!
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+
+document.addEventListener("DOMContentLoaded", function(){
+
+    const form =
+        document.getElementById("dateForm");
+
+    const customOption =
+        document.getElementById("customOption");
+
+    const customFields =
+        document.getElementById("customFields");
+
+    const customDate =
+        document.getElementById("customDate");
+
+    const customTime =
+        document.getElementById("customTime");
+
+    // SHOW / HIDE CUSTOM FIELDS
+
+    document
+        .querySelectorAll('input[name="dateOption"]')
+        .forEach(radio => {
+
+            radio.addEventListener("change", function(){
+
+                if(customOption.checked){
+
+                    customFields.style.display = "block";
+
+                    customDate.required = true;
+
+                }else{
+
+                    customFields.style.display = "none";
+
+                    customDate.required = false;
+
+                    customDate.value = "";
+
+                    customTime.value = "";
+
+                }
+
+            });
+
+        });
+
+    // MINIMUM DATE
+
+    const today = new Date();
+
+    const yyyy = today.getFullYear();
+
+    const mm =
+        String(today.getMonth() + 1)
+        .padStart(2, "0");
+
+    const dd =
+        String(today.getDate())
+        .padStart(2, "0");
+
+    customDate.min = `${yyyy}-${mm}-${dd}`;
+
+    // FORM SUBMIT
+
+    form.addEventListener("submit", function(e){
+
+        e.preventDefault();
+
+        const selected =
+            document.querySelector(
+                'input[name="dateOption"]:checked'
+            );
+
+        if(!selected){
+
+            alert("Please choose an option first ☕");
+
+            return;
+
+        }
+
+        let finalText = "";
+
+        // CUSTOM DATE
+
+        if(selected.value === "Custom Date"){
+
+            if(!customDate.value){
+
+                alert("Please choose a date 📅");
+
+                return;
+
+            }
+
+            const dateObj =
+                new Date(customDate.value);
+
+            const formattedDate =
+                dateObj.toLocaleDateString(
+                    "en-US",
+                    {
+                        weekday:"long",
+                        month:"short",
+                        day:"numeric"
+                    }
+                );
+
+            if(customTime.value.trim()){
+
+                finalText =
+                    `Free on ${formattedDate} (${customTime.value.trim()})`;
+
+            }else{
+
+                finalText =
+                    `Free on ${formattedDate}`;
+
+            }
+
+        }else{
+
+            finalText = selected.value;
+
+        }
+
+        // DISPLAY RESULT
+
+        document.getElementById("finalResponse")
+            .innerText = finalText;
+
+        document.getElementById("formScreen")
+            .style.display = "none";
+
+        document.getElementById("resultScreen")
+            .style.display = "block";
+
+        window.scrollTo({
+            top:0,
+            behavior:"smooth"
+        });
+
+    });
+
+});
+
+</script>
+
+</body>
+</html>
